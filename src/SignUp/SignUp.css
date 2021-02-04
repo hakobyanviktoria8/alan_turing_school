@@ -1,17 +1,41 @@
 .bgSignUp{
-    background-image: url("img/bgSignUp.svg");
+    background-image: url("img/bg.png");
     width: 100%;
     height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    /*justify-content: center;*/
 }
-.header-left {
+.bgSignUp .logoWrap img{
+    width: 15rem;
+}
+.headerLeftText {
     color: white;
-    position: absolute;
-    top: 300px;
-    width: 500px;
+    width: 30rem;
     text-align: center;
-    margin: 20rem auto;
-    border: 1px solid red;
+    margin: 15vh auto;
+
 }
-h1{
-    font-size: 50px;
+.headerLeftText h1{
+    font-size: 3.5rem;
+}
+.headerLeftText p{
+    font-size: 1.2rem;
+    margin-top: 3.5rem;
+}
+.headerRightText h2{
+    font-size: 3rem;
+    color: #173145;
+}
+.headerRightText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30vh auto;
+}
+.headerRightText .makeStyles-textField-4 {
+    /*width: 25rem;*/
 }

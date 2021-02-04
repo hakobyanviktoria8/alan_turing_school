@@ -1,7 +1,8 @@
 import React from "react";
 import { Container, Row, Col } from 'reactstrap';
 import "./SignUp.css";
-// import logoBig from "img/logoBig.png";
+import logo from "./img/logo.png";
+import Form from "./form/Form";
 
 export function SignUP(props){
     return(
@@ -9,8 +10,10 @@ export function SignUP(props){
             <Row>
                 <Col lg={"7"} className={"border p-0"}>
                     <div  className={"bgSignUp"}>
-                        {/*<img src={logoBig} alt=""/>*/}
-                        <div className={"header-left"}>
+                        <div className={"logoWrap"}>
+                            <img src={logo} alt=""/>
+                        </div>
+                        <div className={"headerLeftText"}>
                             <h1>Lorem Ipsum </h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                 Consequuntur ex officia officiis possimus ut. Soluta.
@@ -18,7 +21,9 @@ export function SignUP(props){
                         </div>
                     </div>
                 </Col>
-                <Col lg={"5"} className={"border"}> </Col>
+                <Col lg={"5"} className={"border"}>
+                    <Form/>
+                </Col>
             </Row>
         </Container>
     )
