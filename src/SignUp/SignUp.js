@@ -37,15 +37,34 @@ export function SignUp(props){
                     </div>
                 </Col>
                 <Col lg={"5"} className={"border"}>
-                    <h2>Sign Up</h2>
-                    <form action="" onSubmit={handleSubmit}>
-                        <input type="email" placeholder={"Email"} value={email} onChange={handleChangeEmail}/>
-                        <input type="password" placeholder={"Password"} value={password} onChange={handleChangePassword}/>
-                        <input type="checkbox" checked={checkedAgree} onChange={()=>setCheckedAgree(!checkedAgree)}/>
-                        I accept the <a href="">Terms of Use</a> & <a href="">Privacy Policy</a>
-                        <input type="submit" value="Sign Up" disabled={!checkedAgree} />
-                    </form>
-                    <p>Already have an account? <a href="">Sign In</a></p>
+                    <div className={"headerRightText"}>
+                        <div>
+                            <h2>Sign Up</h2>
+                        </div>
+                        <div>
+                            <form action="" onSubmit={handleSubmit}>
+                                <label>
+                                    <input className={"input"} type="email" placeholder={"Email"} value={email} onChange={handleChangeEmail}/>
+                                </label>
+                                <label>
+                                    <input className={"input"} type="password" placeholder={"Password"} value={password} onChange={handleChangePassword}/>
+                                </label>
+                                <label>
+                                    <input className={"input"} type="password" placeholder={"Confirm Password"} value={password} onChange={handleChangePassword}/>
+                                </label>
+                                <label>
+                                    <input type="checkbox" checked={checkedAgree} onChange={()=>setCheckedAgree(!checkedAgree)}/>
+                                    I accept the <span><a href="">Terms of Use</a> & <a href="">Privacy Policy</a></span>
+                                </label>
+                                <label className={"signUpBtn"}>
+                                    <input type="submit" value="Sign Up" disabled={!checkedAgree} />
+                                </label>
+                            </form>
+                        </div>
+                        <div>
+                            <p>Already have an account? <a href="">Sign In</a></p>
+                        </div>
+                    </div>
                 </Col>
             </Row>
         </Container>

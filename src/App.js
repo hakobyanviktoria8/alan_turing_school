@@ -1,12 +1,15 @@
 import './App.css';
-import {SignUp1} from "./SignUp/SignUp1";
+import {SignIn} from "./SignIn/SignIn";
+import {SignUpSuccess} from "./SignUpSuccess/SignUpSuccess";
+import {SignUp} from "./SignUp/SignUp";
 
 
 function App() {
   return (
     <div className="App">
-        <SignUp1/>
-
+        <SignUp/>
+        <SignUpSuccess/>
+        <SignIn/>
     </div>
   );
 }

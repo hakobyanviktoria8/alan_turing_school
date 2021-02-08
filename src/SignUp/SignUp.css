@@ -30,12 +30,51 @@
     font-size: 3rem;
     color: #173145;
 }
-.headerRightText {
+.headerRightText{
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 30vh auto;
 }
-.headerRightText .makeStyles-textField-4 {
-    /*width: 25rem;*/
+.headerRightText form label, .input{
+    width: 100%;
+}
+.headerRightText .signUpBtn{
+    margin: 1rem 25%;
+    width: 50%;
+}
+.signUpBtn input{
+    width: 100%;
+}
+
+/*2slide*/
+.headerRightTop{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 28vh auto 25vh;
+}
+.headerRightTop h2{
+    font-size: 3rem;
+    color: #173145;
+    margin-bottom: 85px;
+}
+.headerRightTop p{
+    color: #30516A;
+    text-align: center;
+    font-size: 16px;
+}
+.headerRightBottom{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 14px;
+}
+.headerRightBottomLinks a{
+    /*margin: 13px;*/
+    /*display: flex;*/
 }
