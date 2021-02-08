@@ -53,9 +53,7 @@ export default function Form(props) {
 
     return (
         <div className={`${classes.root} headerRightText`}>
-            <div>
-                <h2>Sign Up</h2>
-            </div>
+
             <div>
                 <FormControl className={clsx(classes.margin, classes.textField)}>
                     <InputLabel htmlFor="standard-adornment-password">
