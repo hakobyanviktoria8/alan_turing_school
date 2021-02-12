@@ -1,7 +1,8 @@
 import React,{useState} from "react";
 import { Container, Row, Col } from 'reactstrap';
 import "./../SignUp/SignUp.css";
-import logo from "./../SignUp/img/logo.png";
+import logo from "./../img/logo.png";
+import  {Link} from "react-router-dom";
 
 export function SignIn(props) {
     const [email, setEmail] = useState("");
@@ -41,14 +42,16 @@ export function SignIn(props) {
                                     <label>
                                         <input className={"input"} type="password" placeholder={"Password"} value={password}/>
                                     </label>
-                                    <a href="">Forgot Password?</a>
+                                    <Link to="/ForgotPassword">Forgot Password?</Link>
                                     <label className={"signUpBtn"}>
-                                        <input type="submit" value="Sign In" disabled={email} />
+                                        <Link to="/SignInSuccess">
+                                            <input type="submit" value="Sign In" disabled={email} />
+                                        </Link>
                                     </label>
                                 </form>
                             </div>
                             <div>
-                                <p>New user <a href="">Sign Up</a></p>
+                                <p>New user? <Link to="/SignUp"> Sign Up</Link></p>
                             </div>
                         </div>
                     </Col>

@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function FormPropsTextFields() {
+export default function Form1(props) {
     const classes = useStyles();
     const handleSubmit = (event) => {
         alert('An essay was submitted: ' + this.state.value);

@@ -1,10 +1,10 @@
 import React from "react";
 import { Container, Row, Col } from 'reactstrap';
 import "./../SignUp/SignUp.css";
-import logo from "./../SignUp/img/logo.png";
-import website from "./../SignUp/img/Website.png";
-import facebook from "./../SignUp/img/Facebook.png";
-import linkedin from "./../SignUp/img/Linkedin.png";
+import logo from "./../img/logo.png";
+import website from "./../img/Website.png";
+import facebook from "./../img/Facebook.png";
+import linkedin from "./../img/Linkedin.png";
 
 export function SignUpSuccess(props) {
     return(
@@ -26,7 +26,7 @@ export function SignUpSuccess(props) {
                     </Col>
                     <Col lg={"5"} className={"border"}>
                         <div className={"headerRightTop"}>
-                            <h2>Lorem Ipsum</h2>
+                            <h2>Sign Up Success</h2>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry message. Lorem Ipsum is simply dummy text of the printing and typesetting industry message. </p>
                         </div>
                         <div className={"headerRightBottom"}>

@@ -1,5 +1,8 @@
+body {
+    overflow-y: hidden;
+}
 .bgSignUp{
-    background-image: url("img/bg.png");
+    background-image: url("./../img/bg.png");
     width: 100%;
     height: 100vh;
     background-repeat: no-repeat;
@@ -31,11 +34,11 @@
     color: #173145;
 }
 .headerRightText{
-    width: 50%;
+    width: 55%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 30vh auto;
+    margin: 30vh auto 0;
 }
 .headerRightText form label, .input{
     width: 100%;
@@ -47,6 +50,31 @@
 .signUpBtn input{
     width: 100%;
 }
+/*icons size*/
+.MuiSvgIcon-root{
+    font-size: 1.3rem !important;
+}
+.makeStyles-root-1 .MuiTextField-root {
+    width: 100%;
+}
+.MuiFormControl-root {
+    margin: 10px 0 !important;
+}
+.agreeToRules{
+    margin: 15px 0;
+}
+.btnSignUp{
+    width: 70% !important;
+    padding: .7rem !important;
+    margin: 1.5rem 15% !important;
+    /*background: rgba(0, 52, 102, 0.6) !important;*/
+    border-radius: 3rem !important;
+    font-size: 16px;
+    /*color: white !important;*/
+}
+
+
+
 
 /*2slide*/
 .headerRightTop{
@@ -77,4 +105,14 @@
 .headerRightBottomLinks a{
     /*margin: 13px;*/
     /*display: flex;*/
+}
+input[type='checkbox']{
+    margin: 5px 10px 0 0;
+}
+
+/*modal*/
+.modalLink{
+    text-decoration: underline;
+    margin: 0 5px;
+
 }
