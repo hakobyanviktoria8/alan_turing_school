@@ -1,11 +1,6 @@
 import './App.css';
-import {SignIn} from "./SignIn/SignIn";
-import {SignUpSuccess} from "./SignUpSuccess/SignUpSuccess";
 import {SignUp} from "./SignUp/SignUp";
-import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import {SignInSuccess} from "./SignInSuccess/SignInSuccess";
-import {ForgetPassword} from "./ForgetPassword/ForgetPassword";
-import {SendLink} from "./SendLink/SendLink";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 function App() {
   return (
@@ -18,20 +13,11 @@ function App() {
                 <Route path="/SignUp">
                     <SignUp/>
                 </Route>
-                <Route path="/ForgotPassword">
-                    <ForgetPassword/>
-                </Route>
-                <Route path="/SendLink">
-                    <SendLink/>
-                </Route>
                 <Route path="/SignUpSuccess">
-                    <SignUpSuccess/>
+                    <p>Sign Up Successfully</p>
                 </Route>
                 <Route path="/SignIn">
-                    <SignIn/>
-                </Route>
-                <Route path="/SignInSuccess">
-                    <SignInSuccess/>
+                    <p>Sign In</p>
                 </Route>
             </Switch>
         </Router>
