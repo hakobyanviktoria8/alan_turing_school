@@ -10,21 +10,43 @@ import LockIcon from '@material-ui/icons/Lock';
 import Button from '@material-ui/core/Button';
 import axios from "axios";
 
+
 export function SignUp(props){
     const [email, setEmail] = useState("");
+    const [emailValid, setEmailValid] = useState(false);
     const [password, setPassword] = useState("");
+    const [passwordValid, setPasswordValid] = useState(false);
+    const [passwordErrorMassage, setPasswordErrorMassage] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [checkedAgree, setCheckedAgree] = useState(false);
     const [successMessage, setSuccessMessage] = useState(null);
     const [error, setError] = useState(null);
 
     const handleChangeEmail = (event) => {
+        const reg = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})/;
+        if (reg.test(event.target.value)) {
+            setEmailValid(false)
+        } else {
+            setEmailValid(true)
+        }
         setEmail(event.target.value);
+
     };
     const handleChangePassword = (event) => {
+        if (/(?=.{8,})/.test(event.target.value)) {
+            setPasswordValid(false);
+            setPasswordErrorMassage("Length 8 character")
+
+        } else if (/(?=.*[a-z])/.test(event.target.value)) {
+            setPasswordValid(false);
+            setPasswordErrorMassage("Password contain a-z charakters")
+        }  else {
+            setPasswordValid(true)
+        }
         setPassword(event.target.value);
     };
     const handleChangeConfirmPassword = (event) => {
+        //password === confirmPassword
         setConfirmPassword(event.target.value);
     };
     const handleSubmit = (event) => {
@@ -92,6 +114,8 @@ export function SignUp(props){
                                     value={email}
                                     onChange={handleChangeEmail}
                                     className="input"
+                                    error={emailValid}
+                                    helperText={emailValid? "Error" :""}
                                 />
                                 <TextField
                                     id="standard-password-input"
@@ -101,6 +125,8 @@ export function SignUp(props){
                                     value={password}
                                     onChange={handleChangePassword}
                                     className="input"
+                                    error={passwordValid}
+                                    helperText={passwordErrorMassage}
                                 />
                                 <TextField
                                     id="standard-password-input"
