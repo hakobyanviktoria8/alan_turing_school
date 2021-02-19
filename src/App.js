@@ -1,8 +1,6 @@
 import './App.css';
-import {SignUp} from "./SignUp/SignUp";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-// import {Sign_Up_Valid} from "./Sign_Up_Valid/Sign_UP_Valid";
-import {SignUp_HOOK} from "./SignUp_HOOK/SignUp_HOOK";
+import {Sign_Up_Valid} from "./Sign_Up_Valid/Sign_UP_Valid";
 
 function App() {
   return (
@@ -10,11 +8,10 @@ function App() {
         <Router>
             <Switch>
                 <Route exact path="/">
-                    <SignUp_HOOK/>
-                    {/*<Sign_Up_Valid/>*/}
+                    <Sign_Up_Valid/>
                 </Route>
                 <Route path="/SignUp">
-                    <SignUp/>
+                    <Sign_Up_Valid/>
                 </Route>
                 <Route path="/SignUpSuccess">
                     <p>Sign Up Successfully</p>

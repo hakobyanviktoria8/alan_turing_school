@@ -102,7 +102,11 @@ export function SignUp_HOOK(props){
                                         required: "Password is required",
                                         minLength:{
                                             value: 8,
-                                            message: "Length 8 char."
+                                            message: "Min length 8 character."
+                                        },
+                                        maxLength:{
+                                            value: 15,
+                                            message: "Max length 15 character."
                                         },
                                         validate: (value) => {
                                             return (
