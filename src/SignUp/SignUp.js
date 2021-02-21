@@ -1,64 +1,68 @@
 import React, {useState} from "react";
 import { Container, Row, Col } from 'reactstrap';
-import "./Sign_Up_Valid.css";
+import "./SignUp.css";
 import logo from "./../img/logo.png";
-import  {Link} from "react-router-dom";
+import  { Link, useHistory } from "react-router-dom";
 import ModalComponent from "./ModalComponent";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { sha256, sha224 } from 'js-sha256';
+import { sha256 } from 'js-sha256';
 import {API_BASE_URL} from '../constants/apiConstants';
 
-
-
-export function Sign_Up_Valid(props){
+export function SignUp(props){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordCash, setPasswordCash] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [checkedAgree, setCheckedAgree] = useState(false);
-
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit, errors, setError } = useForm();
+    let history = useHistory();
 
     const onSubmit = data => {
         sendDetailsToServer()
     };
 
+    //change email
     const handleChangeEmail = (event) => {
-        setEmail(event.target.value.split("").filter(x=>x===" "?"":x).join(""));
+        // setEmail(event.target.value.split("").filter(x=>x===" "?"":x).join(""));
+        setEmail(event.target.value);
     };
+
+    //change password and hash 64 simbole
     const handleChangePassword = (event) => {
         setPassword(event.target.value);
-        let hash = sha256.create().update(event.target.value.split("").filter(x => x === " " ? "" : x).join("")).hex();
+        // let hash = sha256.create().update(event.target.value.split("").filter(x => x === " " ? "" : x).join("")).hex();
+        let hash = sha256.create().update(event.target.value).hex();
         setPasswordCash(hash);
     };
+
+    //change confirm password
     const handleChangeConfirmPassword = (event) => {
-        setConfirmPassword(event.target.value.split("").filter(x => x === " "? "" : x).join(""));
+        // setConfirmPassword(event.target.value.split("").filter(x => x === " "? "" : x).join(""));
+        setConfirmPassword(event.target.value);
     };
 
+    //data send to server call form onSubmit
     const sendDetailsToServer = () => {
-
-        // setError(null);
         const payload= {
             "mail": email,
             "password": passwordCash,
         };
-        console.log(payload);
+        // console.log(payload);
 
+        //send data localhost/User
         axios.post(API_BASE_URL + '/User', payload)
             .then(function (response) {
                 if(response.status === 201){
-                    alert("send home page")
-                } else if (response.status === 409) {
-                    // console.log("Email is not avalabal")
-                    errors.email = "Email is already used";
-                    alert("Email is already used")
+                    history.push("/SignUpSuccess");
                 } else {
                     console.log(errors)
                 }
             })
             .catch(function (error) {
-                console.log(error);
+                if (error.response.status === 409) {
+                    setError("email", {message: "Email is already used"});
+                }
             });
     };
 
@@ -89,12 +93,12 @@ export function Sign_Up_Valid(props){
                                     ref = {register({
                                         required: "Email is required",
                                         minLength:{
-                                            value: 8,
-                                            message: "Min length 8 character."
+                                            value: 10,
+                                            message: "Min length 10 character."
                                         },
                                         maxLength:{
-                                            value: 15,
-                                            message: "Max length 15 character."
+                                            value: 50,
+                                            message: "Max length 50 character."
                                         },
                                         validate: (value) => {
                                             return (
@@ -111,7 +115,7 @@ export function Sign_Up_Valid(props){
                                     placeholder={"Email"}
                                     id="email"
                                 />
-                                {errors.email ?  <span>{errors.email.message}</span> : null}
+                                {errors.email ? <span>{errors.email.message}</span> : null}
 
                                 <input
                                     ref = {register({
@@ -121,8 +125,8 @@ export function Sign_Up_Valid(props){
                                             message: "Min length 8 character."
                                         },
                                         maxLength:{
-                                            value: 15,
-                                            message: "Max length 15 character."
+                                            value: 20,
+                                            message: "Max length 20 character."
                                         },
                                         validate: (value) => {
                                             return (
@@ -173,9 +177,7 @@ export function Sign_Up_Valid(props){
                                 </label>
                                 {errors.checkedbtn ? <span>{errors.checkedbtn.message}</span> : null}
 
-
                                 <input className={"input"} type="submit" value="Sign Up"/>
-
                             </form>
                         </div>
                         <div>
