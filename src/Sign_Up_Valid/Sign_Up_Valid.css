@@ -1,15 +1,131 @@
+form{
+    width: 350px !important;
+}
 form .input{
     width: 100%;
+    border: 1px solid gray;
     margin: 1rem 0;
+    padding: .5rem;
+    outline: none;
 }
 
 form .agreeToRules{
     width: 10%;
 }
+.bgSignUp{
+    background-image: url("./../img/bg.png");
+    width: 100%;
+    height: 99.5vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+}
+.bgSignUp .logoWrap img{
+    width: 15rem;
+}
+.headerLeftText {
+    color: white;
+    width: 30rem;
+    text-align: center;
+    margin: 15vh auto;
 
+}
+.headerLeftText h1{
+    font-size: 3.5rem;
+}
+.headerLeftText p{
+    font-size: 1.2rem;
+    margin-top: 3.5rem;
+}
+.headerRightText h2{
+    font-size: 3rem;
+    color: #173145;
+}
+.headerRightText{
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 25vh auto 0;
+}
+.headerRightText form label, .input{
+    width: 100%;
+}
+.headerRightText .signUpBtn{
+    margin: 1rem 25%;
+    width: 50%;
+}
+.signUpBtn input{
+    width: 100%;
+}
+/*icons size*/
+.MuiSvgIcon-root{
+    font-size: 1.3rem !important;
+}
+.makeStyles-root-1 .MuiTextField-root {
+    width: 100%;
+}
+.MuiFormControl-root {
+    margin: 10px 0 !important;
+}
+.agreeToRules{
+    margin: 15px 0;
+}
+.btnSignUp{
+    width: 70% !important;
+    padding: .7rem !important;
+    margin: 1.5rem 15% !important;
+    border-radius: 3rem !important;
+    font-size: 16px;
+}
+/*2slide*/
+.headerRightTop{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 28vh auto 25vh;
+}
+.headerRightTop h2{
+    font-size: 3rem;
+    color: #173145;
+    margin-bottom: 85px;
+}
+.headerRightTop p{
+    color: #30516A;
+    text-align: center;
+    font-size: 16px;
+}
+.headerRightBottom{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 14px;
+}
 
+input[type='checkbox']{
+    margin: 5px 10px 0 0;
+}
 
+/*modal*/
+.modalLink{
+    text-decoration: underline;
+    margin: 0 5px;
+    background: none;
+    border: none;
+    outline: none;
+    color: blue;
+}
 
+/*error*/
+span{
+    padding: 0;
+    color: red;
+}
 
 
 

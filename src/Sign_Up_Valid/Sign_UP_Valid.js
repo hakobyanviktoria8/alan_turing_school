@@ -3,10 +3,11 @@ import { Container, Row, Col } from 'reactstrap';
 import "./Sign_Up_Valid.css";
 import logo from "./../img/logo.png";
 import  {Link} from "react-router-dom";
-import ModalComponent from "../SignUp/ModalComponent";
+import ModalComponent from "./ModalComponent";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { sha256, sha224 } from 'js-sha256';
+import {API_BASE_URL} from '../constants/apiConstants';
 
 
 
@@ -18,6 +19,7 @@ export function Sign_Up_Valid(props){
     const [checkedAgree, setCheckedAgree] = useState(false);
 
     const { register, handleSubmit, watch, errors } = useForm();
+
     const onSubmit = data => {
         sendDetailsToServer()
     };
@@ -35,25 +37,29 @@ export function Sign_Up_Valid(props){
     };
 
     const sendDetailsToServer = () => {
+
         // setError(null);
         const payload= {
-            "email": email,
+            "mail": email,
             "password": passwordCash,
         };
-        // axios.post('User/PostUserItem', payload)
-        //     .then(function (response) {
-        //         if(response.statusText === "OK"){
-        //             setSuccessMessage( 'Registration successful. Redirecting to home page..');
-        //             // redirectToHome();
-        //             setError(null)
-        //         } else{
-        //             alert("Some error ocurred");
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        // });
-        console.log(payload)
+        console.log(payload);
+
+        axios.post(API_BASE_URL + '/User', payload)
+            .then(function (response) {
+                if(response.status === 201){
+                    alert("send home page")
+                } else if (response.status === 409) {
+                    // console.log("Email is not avalabal")
+                    errors.email = "Email is already used";
+                    alert("Email is already used")
+                } else {
+                    console.log(errors)
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     };
 
     return(
@@ -102,8 +108,10 @@ export function Sign_Up_Valid(props){
                                     type="email"
                                     value={email}
                                     onChange={handleChangeEmail}
+                                    placeholder={"Email"}
+                                    id="email"
                                 />
-                                {errors.email ?  <p>{errors.email.message}</p> : null}
+                                {errors.email ?  <span>{errors.email.message}</span> : null}
 
                                 <input
                                     ref = {register({
@@ -128,28 +136,43 @@ export function Sign_Up_Valid(props){
                                     type="password"
                                     value={password}
                                     onChange={handleChangePassword}
+                                    placeholder={"Password"}
+                                    id="password"
                                 />
-                                {errors.password ? <p>{errors.password.message}</p> : null}
+                                {errors.password ? <span>{errors.password.message}</span> : null}
 
-                                <input ref = {register({
+                                <input
+                                    ref = {register({
                                     required: "Confirm Password is required",
                                     validate: value => value === password ? null : "Do not match passwords"
 
                                 })}
-                                       name={"confirmPassword"}
-                                       className={"input"}
-                                       type="password"
-                                       value={confirmPassword}
-                                       onChange={handleChangeConfirmPassword}
+                                   name={"confirmPassword"}
+                                   className={"input"}
+                                   type="password"
+                                   value={confirmPassword}
+                                   onChange={handleChangeConfirmPassword}
+                                   placeholder={"Confirm Password"}
+                                    id="confirmPassword"
                                 />
-                                {errors.confirmPassword ? <p>{errors.confirmPassword.message}</p> : null}
+                                {errors.confirmPassword ? <span>{errors.confirmPassword.message}</span> : null}
 
                                 <label className={"d-flex agreeToRules"}>
-                                    <input ref = {register({required: true})} name={"checked"} type="checkbox" checked={checkedAgree} onChange={()=>setCheckedAgree(!checkedAgree)}/>
+                                    <input
+                                        ref = {register({
+                                        required: "Are you agree"
+                                    })}
+                                       name={"checkedbtn"}
+                                       type="checkbox"
+                                       checked={checkedAgree}
+                                       onChange={()=>setCheckedAgree(!checkedAgree)}
+                                    />
                                     I accept the
                                     <ModalComponent title={"Terms of Use"}/> &
                                     <ModalComponent title={"Privacy Policy"}/>
                                 </label>
+                                {errors.checkedbtn ? <span>{errors.checkedbtn.message}</span> : null}
+
 
                                 <input className={"input"} type="submit" value="Sign Up"/>
 
