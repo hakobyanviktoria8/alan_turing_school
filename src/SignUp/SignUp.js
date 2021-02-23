@@ -24,21 +24,18 @@ export function SignUp(props){
 
     //change email
     const handleChangeEmail = (event) => {
-        // setEmail(event.target.value.split("").filter(x=>x===" "?"":x).join(""));
         setEmail(event.target.value);
     };
 
     //change password and hash 64 simbole
     const handleChangePassword = (event) => {
         setPassword(event.target.value);
-        // let hash = sha256.create().update(event.target.value.split("").filter(x => x === " " ? "" : x).join("")).hex();
         let hash = sha256.create().update(event.target.value).hex();
         setPasswordCash(hash);
     };
 
     //change confirm password
     const handleChangeConfirmPassword = (event) => {
-        // setConfirmPassword(event.target.value.split("").filter(x => x === " "? "" : x).join(""));
         setConfirmPassword(event.target.value);
     };
 
@@ -50,7 +47,6 @@ export function SignUp(props){
         };
         // console.log(payload);
 
-        //send data localhost/User
         axios.post(API_BASE_URL + '/User', payload)
             .then(function (response) {
                 if(response.status === 201){
@@ -110,8 +106,8 @@ export function SignUp(props){
                                     name={"email"}
                                     className={"input"}
                                     type="email"
-                                    value={email}
-                                    onChange={handleChangeEmail}
+                                    // value={email}
+                                    onChange={(e) => handleChangeEmail(e)}
                                     placeholder={"Email"}
                                     id="email"
                                 />
@@ -138,7 +134,7 @@ export function SignUp(props){
                                     name={"password"}
                                     className={"input"}
                                     type="password"
-                                    value={password}
+                                    // value={password}
                                     onChange={handleChangePassword}
                                     placeholder={"Password"}
                                     id="password"
@@ -154,7 +150,7 @@ export function SignUp(props){
                                    name={"confirmPassword"}
                                    className={"input"}
                                    type="password"
-                                   value={confirmPassword}
+                                   // value={confirmPassword}
                                    onChange={handleChangeConfirmPassword}
                                    placeholder={"Confirm Password"}
                                     id="confirmPassword"
