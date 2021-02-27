@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { Container, Row, Col } from 'reactstrap';
 import "./SignUp.css";
 import logo from "./../img/logo.png";
@@ -10,40 +10,13 @@ import { sha256 } from 'js-sha256';
 import {API_BASE_URL} from '../constants/apiConstants';
 
 export function SignUp(props){
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [passwordCash, setPasswordCash] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [checkedAgree, setCheckedAgree] = useState(false);
-    const { register, handleSubmit, errors, setError } = useForm();
+    const { register, handleSubmit, errors, watch, setError } = useForm({mode: 'onChange'});
     let history = useHistory();
 
     const onSubmit = data => {
-        sendDetailsToServer()
-    };
-
-    //change email
-    const handleChangeEmail = (event) => {
-        setEmail(event.target.value);
-    };
-
-    //change password and hash 64 simbole
-    const handleChangePassword = (event) => {
-        setPassword(event.target.value);
-        let hash = sha256.create().update(event.target.value).hex();
-        setPasswordCash(hash);
-    };
-
-    //change confirm password
-    const handleChangeConfirmPassword = (event) => {
-        setConfirmPassword(event.target.value);
-    };
-
-    //data send to server call form onSubmit
-    const sendDetailsToServer = () => {
         const payload= {
-            "mail": email,
-            "password": passwordCash,
+            "mail": data.email,
+            "password": sha256.create().update(data.password).hex(),
         };
         // console.log(payload);
 
@@ -65,7 +38,7 @@ export function SignUp(props){
     return(
         <Container fluid className={"SignUP"}>
             <Row>
-                <Col lg={"7"} className={"border p-0"}>
+                <Col lg={"7"} md={"7"} className={"p-0"}>
                     <div  className={"bgSignUp"}>
                         <div className={"logoWrap"}>
                             <img src={logo} alt=""/>
@@ -73,12 +46,12 @@ export function SignUp(props){
                         <div className={"headerLeftText"}>
                             <h1>Lorem Ipsum </h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Consequuntur ex officia officiis possimus ut. Soluta.
+                                Consequuntur ex officia officiis possimus.
                             </p>
                         </div>
                     </div>
                 </Col>
-                <Col lg={"5"} className={"border"}>
+                <Col lg={"5"} md={"5"} className={"p-0"}>
                     <div className={"headerRightText"}>
                         <div>
                             <h2>Sign Up</h2>
@@ -98,7 +71,7 @@ export function SignUp(props){
                                         },
                                         validate: (value) => {
                                             return (
-                                                [/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/].every(pattern => pattern.test(value)) ||
+                                                [/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"/].every(pattern => pattern.test(value)) ||
                                                 "Invalid email."
                                             )
                                         }
@@ -106,10 +79,7 @@ export function SignUp(props){
                                     name={"email"}
                                     className={"input"}
                                     type="email"
-                                    // value={email}
-                                    onChange={(e) => handleChangeEmail(e)}
                                     placeholder={"Email"}
-                                    id="email"
                                 />
                                 {errors.email ? <span>{errors.email.message}</span> : null}
 
@@ -134,49 +104,49 @@ export function SignUp(props){
                                     name={"password"}
                                     className={"input"}
                                     type="password"
-                                    // value={password}
-                                    onChange={handleChangePassword}
                                     placeholder={"Password"}
-                                    id="password"
                                 />
                                 {errors.password ? <span>{errors.password.message}</span> : null}
 
                                 <input
                                     ref = {register({
                                     required: "Confirm Password is required",
-                                    validate: value => value === password ? null : "Do not match passwords"
+                                    validate: value => value === watch('password') ? null : "Do not match passwords"
 
-                                })}
+                                    })}
+
                                    name={"confirmPassword"}
                                    className={"input"}
                                    type="password"
-                                   // value={confirmPassword}
-                                   onChange={handleChangeConfirmPassword}
                                    placeholder={"Confirm Password"}
-                                    id="confirmPassword"
                                 />
+
                                 {errors.confirmPassword ? <span>{errors.confirmPassword.message}</span> : null}
+                                <Row>
+                                    <Col lg={12}  className={"d-flex agreeToRules"}>
+                                        <label>
+                                            <input
+                                                ref = {register({
+                                                required: "Are you agree"
+                                            })}
+                                               name={"checkedbtn"}
+                                               type="checkbox"
+                                            />
+                                            I accept the
+                                        </label>
+                                        <ModalComponent title={"Terms of Use"}/> &
+                                        <ModalComponent title={"Privacy Policy"}/>
 
-                                <label className={"d-flex agreeToRules"}>
-                                    <input
-                                        ref = {register({
-                                        required: "Are you agree"
-                                    })}
-                                       name={"checkedbtn"}
-                                       type="checkbox"
-                                       checked={checkedAgree}
-                                       onChange={()=>setCheckedAgree(!checkedAgree)}
-                                    />
-                                    I accept the
-                                    <ModalComponent title={"Terms of Use"}/> &
-                                    <ModalComponent title={"Privacy Policy"}/>
-                                </label>
+                                    </Col>
+                                </Row>
+
                                 {errors.checkedbtn ? <span>{errors.checkedbtn.message}</span> : null}
-
+                                <br/>
+                                <br/>
                                 <input className={"input"} type="submit" value="Sign Up"/>
                             </form>
                         </div>
-                        <div>
+                        <div className={"signUpWraper"}>
                             <p>Already have an account?
                                 <Link to="/SignIn"> Sign In</Link>
                             </p>

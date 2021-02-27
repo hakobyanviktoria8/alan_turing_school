@@ -11,7 +11,7 @@ export function SignUpSuccess(props) {
         <div className={"SignUpSuccess"}>
             <Container fluid className={"SignUP"}>
                 <Row>
-                    <Col lg={"7"} className={"border p-0"}>
+                    <Col lg={"7"} md={"7"} className={"p-0"}>
                         <div  className={"bgSignUp"}>
                             <div className={"logoWrap"}>
                                 <img src={logo} alt=""/>
@@ -19,27 +19,25 @@ export function SignUpSuccess(props) {
                             <div className={"headerLeftText"}>
                                 <h1>Lorem Ipsum </h1>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Consequuntur ex officia officiis possimus ut. Soluta.
+                                    Consequuntur ex officia officiis possimus.
                                 </p>
                             </div>
                         </div>
                     </Col>
-                    <Col lg={"5"} className={"border"}>
+                    <Col lg={"5"} md={"5"} className={"p-0"}>
                         <div className={"headerRightTop"}>
-                            <h2>Lorem Ipsum</h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry message.
+                            <h2>Sign up successfully</h2>
+                            <p>Please check your email. The of the printing and typesetting industry message.
                                 Lorem Ipsum is simply dummy text of the printing and typesetting industry message.
                             </p>
-                            <p>Sign up successfully.</p>
-                            <b>Please check your email</b>
                         </div>
                         <div className={"headerRightBottom"}>
-                            <a href="#" className={"mb-1"}>admin@alanturingschool.net</a>
+                            <a href="https://www.alanturingschool.net/" className={"mb-1"}>admin@alanturingschool.net</a>
                             <a href="tel:+374 00 000000" className={"mb-3"}> +374 00 000000</a>
                             <div className={"headerRightBottomLinks"}>
-                                <a href="#" className={"m-2"}><img src={website} alt=""/></a>
-                                <a href="#" className={"m-2"}><img src={facebook} alt=""/></a>
-                                <a href="#" className={"m-2"}><img src={linkedin} alt=""/></a>
+                                <a href="https://www.alanturingschool.net/" className={"m-2"}><img src={website} alt=""/></a>
+                                <a href="https://www.facebook.com/PhilosophyOfProgramming" className={"m-2"}><img src={facebook} alt=""/></a>
+                                <a href="https://www.linkedin.com/company/alanturingschool/" className={"m-2"}><img src={linkedin} alt=""/></a>
                             </div>
                         </div>
                     </Col>

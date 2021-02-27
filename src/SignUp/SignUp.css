@@ -3,20 +3,21 @@ form{
 }
 form .input{
     width: 100%;
-    border: 1px solid gray;
+    border: none;
+    border-bottom: 1px solid #a6a6a6;
     margin: 1rem 0;
     padding: .5rem;
     outline: none;
+    font-size: 16px;
 }
 
 form .agreeToRules{
     width: 10%;
 }
 .bgSignUp{
-    background-image: url("./../img/bg.png");
+    background: url("./../img/bg1.png") no-repeat center center;
     width: 100%;
-    height: 99.5vh;
-    background-repeat: no-repeat;
+    height: 100vh;
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -27,21 +28,24 @@ form .agreeToRules{
 }
 .headerLeftText {
     color: white;
-    width: 30rem;
+    width: 70%;
     text-align: center;
     margin: 15vh auto;
 
 }
 .headerLeftText h1{
-    font-size: 3.5rem;
+    font-size: 50px;
 }
 .headerLeftText p{
-    font-size: 1.2rem;
+    font-size: 24px;
     margin-top: 3.5rem;
 }
 .headerRightText h2{
-    font-size: 3rem;
+    font-size: 30px;
+    margin-bottom: 1rem;
+    font-weight: bold;
     color: #173145;
+    text-align: center;
 }
 .headerRightText{
     width: 55%;
@@ -71,7 +75,10 @@ form .agreeToRules{
     margin: 10px 0 !important;
 }
 .agreeToRules{
-    margin: 15px 0;
+    margin: 15px 0 0;
+}
+form .agreeToRules label {
+    width: auto;
 }
 .btnSignUp{
     width: 70% !important;
@@ -86,39 +93,51 @@ form .agreeToRules{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 28vh auto 25vh;
+    margin: 28vh auto 0;
 }
 .headerRightTop h2{
-    font-size: 3rem;
+    font-size: 30px;
+    margin-bottom: 5rem;
+    font-weight: bold;
     color: #173145;
-    margin-bottom: 85px;
+    text-align: center;
 }
 .headerRightTop p{
-    color: #30516A;
     text-align: center;
     font-size: 16px;
 }
 .headerRightBottom{
     display: flex;
     flex-direction: column;
-    width: 40%;
-    margin: 0 auto;
+    width: 50%;
+    margin: 12rem auto 0;
     text-align: center;
     font-size: 14px;
 }
-
 input[type='checkbox']{
     margin: 5px 10px 0 0;
 }
+input[type="submit"]{
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    background: #30516A;
+    color: white;
+    width: 70%;
+    margin: 15px 15%;
+}
 
 /*modal*/
+.modal span{
+    color: #0092FF;
+}
 .modalLink{
     text-decoration: underline;
     margin: 0 5px;
     background: none;
     border: none;
     outline: none;
-    color: blue;
+    color: #0092FF;
 }
 
 /*error*/
@@ -127,7 +146,11 @@ span{
     color: red;
 }
 
-
+.signUpWraper a, .headerRightBottom a{
+    color: #0092FF;
+    text-decoration: underline;
+    padding-left: 5px;
+}
 
 
 
