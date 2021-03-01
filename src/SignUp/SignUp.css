@@ -1,5 +1,5 @@
 form{
-    width: 350px !important;
+    width: 100% !important;
 }
 form .input{
     width: 100%;
@@ -11,7 +11,8 @@ form .input{
     font-size: 16px;
 }
 form .agreeToRules{
-    width: 10%;
+    /*width: 10%;*/
+    align-items: flex-end
 }
 .bgSignUp{
     background: url("./../img/bg1.png") no-repeat center center;
