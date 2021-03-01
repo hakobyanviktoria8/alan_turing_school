@@ -124,7 +124,7 @@ export function SignUp(props){
                                 {errors.confirmPassword ? <span>{errors.confirmPassword.message}</span> : null}
                                 <Row>
                                     <Col lg={12}  className={"d-flex agreeToRules"}>
-                                        <label className={"m-0"}>
+                                        <label className={"m-0"} >
                                             <input
                                                 ref = {register({
                                                 required: "Are you agree"
