@@ -132,14 +132,16 @@ input[type="submit"], .signInBtn input{
     color: #0092FF;
 }
 .modalLink{
-    text-decoration: underline;
     margin: 0 5px;
     background: none;
     border: none;
     outline: none;
     color: #0092FF;
 }
-
+.modalLink:hover{
+    text-decoration: underline;
+    color: #0056b3;
+}
 /*error*/
 span{
     padding: 0;
@@ -149,7 +151,7 @@ span{
 
 .signUpWraper a, .headerRightBottom a, .headerRightText a{
     color: #0092FF;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
     padding-left: 5px;
 }
 

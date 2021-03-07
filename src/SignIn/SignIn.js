@@ -97,8 +97,8 @@ export function SignIn(props) {
                                     </label>
                                 </form>
                             </div>
-                            <div>
-                                <p className={"text-center"}>New user <Link to = "/SignUp">Sign Up</Link></p>
+                            <div  className={"text-center"}>
+                                <p>New user <Link to = "/SignUp">Sign Up</Link></p>
                             </div>
                         </div>
                     </Col>
