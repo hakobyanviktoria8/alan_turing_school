@@ -102,7 +102,7 @@ export function SignUp(props){
                                                 },
                                                 validate: (value) => {
                                                     return (
-                                                        [/^((?!.*[\s])(?=.*[A-Z])(?=.*\d))/i].every(pattern => pattern.test(value)) ||
+                                                        [/^((?!.*[\s])(?=.*[A-Z])(?=.*[a-z])(?=.*\d))/].every(pattern => pattern.test(value)) ||
                                                         "The password must contain uppercase, lowercase and number."
                                                     )
                                                 }
