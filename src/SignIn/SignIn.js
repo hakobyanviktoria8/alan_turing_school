@@ -17,21 +17,22 @@ export function SignIn(props) {
             "mail": data.email,
             "password": sha256.create().update(data.password).hex(),
         };
-        console.log(payload);
 
-        // axios.post(API_BASE_URL + '/User', payload)
-        //     .then(function (response) {
-        //         if(response.status === 201){
-        //             history.push("/SignInSuccess");
-        //         } else {
-        //             console.log(errors)
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         if (error.response.status === 409) {
-        //             setError("email", {message: "Email is already used"});
-        //         }
-        //     });
+        axios.post(API_BASE_URL + '/User/LogIn', payload)
+            .then(function (response) {
+                if(response.status === 200){
+                    history.push("/SignInSuccess");
+                } else {
+                    console.log(errors)
+                }
+            })
+            .catch(function (error) {
+                if (error.response.status === 404) {
+                    setError("email", {message: "Email doesn't exist"});
+                }  else if (error.response.status === 401) {
+                    setError("password", {message: "Incorrect password"});
+                }
+            });
     };
 
 

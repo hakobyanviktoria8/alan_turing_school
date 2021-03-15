@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import {SignUp} from "./SignUp/SignUp";
 import {SignUpSuccess} from "./SignUpSuccess/SignUpSuccess";
 import {SignIn} from "./SignIn/SignIn";
+import {SignInSuccess} from "./SignInSuccess/SignInSuccess";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
                 </Route>
                 <Route path="/SignIn">
                     <SignIn/>
+                </Route>
+                <Route path="/SignInSuccess">
+                    <SignInSuccess/>
                 </Route>
             </Switch>
         </Router>
