@@ -27,10 +27,8 @@ export function SignIn(props) {
                 }
             })
             .catch(function (error) {
-                if (error.response.status === 404) {
-                    setError("email", {message: "Email doesn't exist"});
-                }  else if (error.response.status === 401) {
-                    setError("password", {message: "Incorrect password"});
+                if (error.response.status === 401) {
+                    setError("password", {message: "Incorrect email or password"});
                 }
             });
     };
