@@ -22,7 +22,7 @@ export function SignUp(props){
 
         axios.post(API_BASE_URL + '/User', payload)
             .then(function (response) {
-                if(response.status === 201){
+                if(response.status === 200){
                     history.push("/SignUpSuccess");
                 } else {
                     console.log(errors)
