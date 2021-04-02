@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import {SignUp} from "./SignUp/SignUp";
 import {SignUpSuccess} from "./SignUpSuccess/SignUpSuccess";
 import {SignIn} from "./SignIn/SignIn";
-import {SignInSuccess} from "./SignInSuccess/SignInSuccess";
+import {MainPage} from "./MainPage/MainPage";
 
 function App() {
   return (
@@ -22,8 +22,8 @@ function App() {
                 <Route path="/SignIn">
                     <SignIn/>
                 </Route>
-                <Route path="/SignInSuccess">
-                    <SignInSuccess/>
+                <Route path="/main-page">
+                    <MainPage/>
                 </Route>
             </Switch>
         </Router>

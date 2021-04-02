@@ -13,24 +13,27 @@ export function SignIn(props) {
     let history = useHistory();
 
     const onSubmit = data => {
-        const payload= {
-            "mail": data.email,
-            "password": sha256.create().update(data.password).hex(),
-        };
+        history.push("/main-page");
 
-        axios.post(API_BASE_URL + '/User/LogIn', payload)
-            .then(function (response) {
-                if(response.status === 200){
-                    history.push("/SignInSuccess");
-                } else {
-                    console.log(errors)
-                }
-            })
-            .catch(function (error) {
-                if (error.response.status === 401) {
-                    setError("password", {message: "Incorrect email or password"});
-                }
-            });
+
+        // const payload= {
+        //     "mail": data.email,
+        //     "password": sha256.create().update(data.password).hex(),
+        // };
+        //
+        // axios.post(API_BASE_URL + '/User/LogIn', payload)
+        //     .then(function (response) {
+        //         if(response.status === 200){
+        //             history.push("/main-page");
+        //         } else {
+        //             console.log(errors)
+        //         }
+        //     })
+        //     .catch(function (error) {
+        //         if (error.response.status === 401) {
+        //             setError("password", {message: "Incorrect email or password"});
+        //         }
+        //     });
     };
 
 

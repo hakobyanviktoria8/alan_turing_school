@@ -1,0 +1,22 @@
+.SidebarLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 5px 10px gray;
+  width: 5rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  border-right: 1px solid #d7d7d7;
+}
+.SidebarLeft a img {
+  width: 5rem;
+}
+.SidebarLeft .activ_icon{
+  background: #E5EFF6;
+}
+.SidebarLeft .icon {
+  padding: 20px 15px;
+}
+
+
