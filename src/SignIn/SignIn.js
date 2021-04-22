@@ -6,7 +6,7 @@ import axios from "axios/index";
 import {sha256} from "js-sha256";
 import {useForm} from "react-hook-form/dist/index";
 import  { Link, useHistory } from "react-router-dom";
-import {API_BASE_URL} from '../constants/apiConstants';
+// import {API_BASE_URL} from '../constants/apiConstants';
 
 export function SignIn(props) {
     const { register, handleSubmit, errors, setError } = useForm({mode: 'onChange'});
@@ -16,11 +16,11 @@ export function SignIn(props) {
         history.push("/main-page");
 
 
-        // const payload= {
-        //     "mail": data.email,
-        //     "password": sha256.create().update(data.password).hex(),
-        // };
-        //
+        const payload= {
+            "mail": data.email,
+            "password": sha256.create().update(data.password).hex(),
+        };
+
         // axios.post(API_BASE_URL + '/User/LogIn', payload)
         //     .then(function (response) {
         //         if(response.status === 200){

@@ -1,45 +1,46 @@
 import React from "react";
-import { Container, Row, Col } from 'reactstrap';
+import {Container, Row, Col} from 'reactstrap';
 import "./SignUp.css";
 import logo from "./../img/logo.png";
-import  { Link, useHistory } from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import ModalComponent from "./ModalComponent";
-import { useForm } from "react-hook-form";
-import axios from "axios";
-import { sha256 } from 'js-sha256';
-import {API_BASE_URL} from '../constants/apiConstants';
+import {useForm} from "react-hook-form";
+// import axios from "axios";
+import {sha256} from 'js-sha256';
+// import {API_BASE_URL} from '../constants/apiConstants';
 
-export function SignUp(props){
-    const { register, handleSubmit, errors, watch, setError } = useForm({mode: 'onChange'});
+export function SignUp(props) {
+    const {register, handleSubmit, errors, watch, setError} = useForm({mode: 'onChange'});
     let history = useHistory();
 
     const onSubmit = data => {
-        const payload= {
+        const payload = {
             "mail": data.email,
             "password": sha256.create().update(data.password).hex(),
         };
-        // console.log(payload);
+        history.push("/SignUpSuccess");
+        console.log(payload);
 
-        axios.post(API_BASE_URL + '/User', payload)
-            .then(function (response) {
-                if(response.status === 200){
-                    history.push("/SignUpSuccess");
-                } else {
-                    console.log(errors)
-                }
-            })
-            .catch(function (error) {
-                if (error.response.status === 409) {
-                    setError("email", {message: "Email is already used"});
-                }
-            });
+        // axios.post(API_BASE_URL + '/User', payload)
+        //     .then(function (response) {
+        //         if (response.status === 200) {
+        //             history.push("/SignUpSuccess");
+        //         } else {
+        //             console.log(errors)
+        //         }
+        //     })
+        //     .catch(function (error) {
+        //         if (error.response.status === 409) {
+        //             setError("email", {message: "Email is already used"});
+        //         }
+        //     });
     };
 
-    return(
+    return (
         <Container fluid className={"SignUP"}>
             <Row>
                 <Col lg={"7"} md={"7"} className={"p-0"}>
-                    <div  className={"bgSignUp"}>
+                    <div className={"bgSignUp"}>
                         <div className={"logoWrap"}>
                             <img src={logo} alt=""/>
                         </div>
@@ -61,13 +62,13 @@ export function SignUp(props){
                                 <Row>
                                     <Col lg={12}>
                                         <input
-                                            ref = {register({
+                                            ref={register({
                                                 required: "Email is required",
-                                                minLength:{
+                                                minLength: {
                                                     value: 10,
                                                     message: "Min length 10 character."
                                                 },
-                                                maxLength:{
+                                                maxLength: {
                                                     value: 50,
                                                     message: "Max length 50 character."
                                                 },
@@ -90,13 +91,13 @@ export function SignUp(props){
                                 <Row>
                                     <Col lg={12}>
                                         <input
-                                            ref = {register({
+                                            ref={register({
                                                 required: "Password is required",
-                                                minLength:{
+                                                minLength: {
                                                     value: 8,
                                                     message: "Min length 8 character."
                                                 },
-                                                maxLength:{
+                                                maxLength: {
                                                     value: 20,
                                                     message: "Max length 20 character."
                                                 },
@@ -119,16 +120,16 @@ export function SignUp(props){
                                 <Row>
                                     <Col lg={12}>
                                         <input
-                                            ref = {register({
-                                            required: "Confirm Password is required",
-                                            validate: value => value === watch('password') ? null : "Do not match passwords"
+                                            ref={register({
+                                                required: "Confirm Password is required",
+                                                validate: value => value === watch('password') ? null : "Do not match passwords"
 
                                             })}
 
-                                           name={"confirmPassword"}
-                                           className={"input"}
-                                           type="password"
-                                           placeholder={"Confirm Password"}
+                                            name={"confirmPassword"}
+                                            className={"input"}
+                                            type="password"
+                                            placeholder={"Confirm Password"}
                                         />
                                     </Col>
                                 </Row>
@@ -136,14 +137,14 @@ export function SignUp(props){
                                 {errors.confirmPassword ? <span>{errors.confirmPassword.message}</span> : null}
                                 <br/>
                                 <Row>
-                                    <Col lg={12}  className={"d-flex agreeToRules"}>
-                                        <label className={"m-0"} >
+                                    <Col lg={12} className={"d-flex agreeToRules"}>
+                                        <label className={"m-0"}>
                                             <input
-                                                ref = {register({
-                                                required: "Are you agree"
-                                            })}
-                                               name={"checkedbtn"}
-                                               type="checkbox"
+                                                ref={register({
+                                                    required: "Are you agree"
+                                                })}
+                                                name={"checkedbtn"}
+                                                type="checkbox"
                                             />
                                             I accept the
                                         </label>
